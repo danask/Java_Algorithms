@@ -27,11 +27,15 @@ class Node {
 
 	}
 
-	public void contains()
+	public boolean contains(int data)
+	{
+		return true;
+	}
+	
+	public void printNode()
 	{
 		
 	}
-	
 }
 
 
@@ -42,10 +46,10 @@ public class TreeNode_Pseudo
 	Node left, right;
 	int data;
 	
-	public Node(int data)
-	{
-		this.data = data;
-	}
+//	public Node(int data)
+//	{
+//		this.data = data;
+//	}
 	
 //	public void insert(int value)
 //	{
@@ -110,7 +114,7 @@ public class TreeNode_Pseudo
 		// 1
 		if(left != null)
 		{
-			left.printInOrder();
+			left.printNode();
 		}
 		
 		// 2
@@ -119,7 +123,7 @@ public class TreeNode_Pseudo
 		// 3
 		if(right !=null)
 		{
-			right.printInOrder();
+			right.printNode();
 		}
 	}
 	
@@ -130,12 +134,12 @@ public class TreeNode_Pseudo
 
 		if(left != null)
 		{
-			left.printPreOrder();
+			left.printNode();
 		}
 
 		if(right !=null)
 		{
-			right.printPreOrder();
+			right.printNode();
 		}
 	}	
 
@@ -145,12 +149,12 @@ public class TreeNode_Pseudo
 
 		if(left != null)
 		{
-			left.printPostOrder();
+			left.printNode();
 		}
 
 		if(right !=null)
 		{
-			right.printPostOrder();
+			right.printNode();
 		}
 		
 		System.out.println(data);			
