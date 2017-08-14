@@ -26,11 +26,22 @@ public class DFSLinkedListTree
 		TreeNode root = createTreeFromArray(nodes);
 
 		// Logic
+		
+		// 1) DFS
 		// TreeNode == node(root)
 		ArrayList<LinkedList<TreeNode>> arrayList = createLevelLinkedList(root);
 		
 		// Result
 		printResult(arrayList);
+		
+		
+		// 2) BFS
+		ArrayList<LinkedList<TreeNode>> arrayListBFS = createLevelLinkedListBFS(root);
+		
+		// Result
+		printResult(arrayListBFS);
+		
+		
 	}
 	
 	
@@ -99,6 +110,45 @@ public class DFSLinkedListTree
 		createLevelLinkedList(root.left, arrayList, level + 1);  // node : 2,  lv : 1, arrayList.size() : 1
 		createLevelLinkedList(root.right, arrayList, level + 1); // node : 3, lv : 1, arrayList.size() : 2(due to array by root.left)
 	}
+	
+	
+	// to avoid the additional memory
+	public static ArrayList<LinkedList<TreeNode>> createLevelLinkedListBFS(TreeNode root) 
+	{
+		ArrayList<LinkedList<TreeNode>> resultArrayList = new ArrayList<LinkedList<TreeNode>>();
+		
+		/* "Visit" the root */
+		LinkedList<TreeNode> current = new LinkedList<TreeNode>();
+		
+		// 1st trial
+		if (root != null) 
+			current.add(root);
+		
+		while (current.size() > 0) // while(!queue.isEmpty()) 
+		{
+			// Dequeue to result
+			resultArrayList.add(current); // Add previous level
+			
+			LinkedList<TreeNode> parents = current; // Go to next level
+			current = new LinkedList<TreeNode>(); 
+					
+			// Enqueue
+			for (TreeNode parent : parents) 
+			{
+				/* Visit the children */
+				if (parent.left != null) {
+					current.add(parent.left);
+				}
+				if (parent.right != null) {
+					current.add(parent.right);
+				}
+			}
+		}
+
+		return resultArrayList;
+	}
+		
+	
 	
 	// 1st trial : initialize arrayList
 	public static ArrayList<LinkedList<TreeNode>> createLevelLinkedList(TreeNode root) 
