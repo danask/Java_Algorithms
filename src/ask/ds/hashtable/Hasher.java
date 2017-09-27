@@ -2,6 +2,13 @@ package ask.ds.hashtable;
 
 import java.util.ArrayList;
 
+//http://egloos.zum.com/sweeper/v/925740
+//http://bcho.tistory.com/1072	
+//http://d2.naver.com/helloworld/831311	
+
+//open addressing : linear probing
+//separate chaining[v]
+//-> different hashcode, resize by LL to tree, cache
 
 class Dummy 
 {
@@ -159,8 +166,7 @@ public class Hasher<K, V>
 //		System.out.printf("bucketArray.size() : %d\n", bucketArray.size());
 		return Math.abs(key.hashCode() % bucketArray.size());  
 	}
-	
-	
+
 	
 	public void printTable() 
 	{
